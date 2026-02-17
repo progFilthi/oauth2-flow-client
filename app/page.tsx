@@ -1,17 +1,13 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Shield,
   ShoppingBag,
   MessageSquare,
   User,
   ArrowRight,
-  Lock,
   Zap,
 } from "lucide-react";
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+import { NavBar } from "@/components/nav-bar";
 
 const endpoints = [
   {
@@ -51,28 +47,8 @@ export default function Home() {
       </div>
 
       <div className="relative z-10">
-        {/* Navbar */}
-        <nav className="border-b border-border/50 backdrop-blur-xl">
-          <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-            <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
-                <Shield className="h-5 w-5 text-primary" />
-              </div>
-              <span className="text-lg font-semibold tracking-tight">
-                OAuth<span className="text-primary">Flow</span>
-              </span>
-            </div>
-            <a href={`${API_BASE}/oauth2/authorization/google`}>
-              <Button
-                variant="default"
-                className="gap-2 bg-primary hover:bg-primary/90 cursor-pointer"
-              >
-                <Lock className="h-4 w-4" />
-                Sign in with Google
-              </Button>
-            </a>
-          </div>
-        </nav>
+        {/* Session-aware Navbar */}
+        <NavBar />
 
         {/* Hero */}
         <section className="mx-auto max-w-6xl px-6 pb-12 pt-20 text-center md:pt-32">
